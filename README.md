@@ -28,7 +28,6 @@ Este repositório contém o desenvolvimento do site oficial da **Confeitaria La 
 - HTML5
 - CSS3
 - JavaScript (Vanilla)
-- Git e GitHub
 
 ---
 
