@@ -1,0 +1,167 @@
+body {
+    font-family: "Segoe UI", sans-serif;
+    margin: 0;
+    background-color: #fff8f0;
+    color: #261D1A;
+  }
+  
+  header {
+    background-color: white;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    border-bottom: 1px solid #BFDBC8;
+  }
+  
+  header h1 {
+    margin: 0;
+    font-size: 2.5em;
+  }
+  
+  header p {
+    margin: 10px 0 20px;
+    font-style: italic;
+  }
+
+  .logo {
+    max-width: 250px;
+    height: auto;
+    margin-bottom: 10px;
+  }  
+  
+  nav a {
+    margin: 0 10px;
+    padding: 10px 20px;
+    background-color: #BFDBC8;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+  
+  nav a:hover {
+    background-color: #F3B8BB;
+  }
+  
+  main {
+    padding: 30px;
+    max-width: 1000px;
+    margin: auto;
+  }
+  
+  .intro {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .vitrine {
+    text-align: center;
+  }
+  
+  .produtos {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+  
+  .produto {
+    background-color: #F3B8BB;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: calc(33.333% - 20px); /* 3 por linha considerando o gap */
+    box-sizing: border-box;
+  }
+  
+  .produto img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    display: block;
+  }
+  
+  footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #BFDBC8;
+    color: white;
+    margin-top: 40px;
+  }
+
+  @media (max-width: 900px) {
+    .produto {
+      width: calc(50% - 20px); /* 2 por linha */
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .produto {
+      width: 100%; /* 1 por linha */
+    }
+  }
+  
+
+  
+  .login-container {
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  .login-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  }
+
+  .login-container input,
+  .login-container select,
+  .login-container button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 1rem;
+  }
+
+  
+  .login-container h2 {
+    text-align: center;
+  }
+  
+  .login-container label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .login-container input, select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .login-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #BFDBC8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+  
+  .login-container button:hover {
+    background-color: #F3B8BB;
+  }
+  
+  .mensagem {
+    margin-top: 15px;
+    text-align: center;
+    color: red;
+  }
+  

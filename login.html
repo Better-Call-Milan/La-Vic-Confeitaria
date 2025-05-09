@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - Confeitaria La Vic</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <header>
+        <img src="img/logo.png" alt="Confeitaria La Vic" class="logo" />
+    </header>
+    <main>
+    <section class="login-container">
+      <h2>Entrar na sua conta</h2>
+      <form id="loginForm">
+        <label>Email:
+          <input type="email" id="email" required />
+        </label>
+        <br><br>
+        <label>Senha:
+          <input type="password" id="senha" required />
+        </label>
+        <br><br>
+        <label>Tipo de acesso:
+          <select id="tipo">
+            <option value="cliente">Cliente</option>
+            <option value="admin">Administrador</option>
+          </select>
+        </label>
+        <br><br>
+        <button type="submit">Entrar</button>
+        <br><br>
+        <button type="button" onclick="window.location.href='cadastro.html'">Cadastrar-se</button>
+        <br><br>
+        <button type="button" onclick="window.location.href='index.html'">Voltar</button>
+      </form>
+
+      <p id="mensagemLogin" class="mensagem"></p>
+    </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Confeitaria La Vic. Todos os direitos reservados.</p>
+    </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
