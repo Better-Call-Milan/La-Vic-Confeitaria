@@ -2,8 +2,8 @@
   <table>
     <tr>
       <td align="center">
-        <img src="img/La_Vic_Confeitaria.png" alt="Logo da Confeitaria La Vic" width="200"/><br/>
-        <strong>Confeitaria La Vic</strong>
+        <img src="img/Social_Preview_Confeitaria_La_Vic.png" alt="Logo da Confeitaria La Vic" width="1000"/><br/>
+        
       </td>
   </table>
 </div>

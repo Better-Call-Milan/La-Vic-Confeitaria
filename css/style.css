@@ -84,9 +84,10 @@ body {
   footer {
     text-align: center;
     padding: 20px;
-    background-color: #BFDBC8;
-    color: white;
+    background-color: white;
+    color: #BFDBC8;
     margin-top: 40px;
+    border-top: 1px solid #BFDBC8;
   }
 
   @media (max-width: 900px) {
