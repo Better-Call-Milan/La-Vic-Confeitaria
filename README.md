@@ -1,3 +1,13 @@
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <img src="img/La_Vic_Confeitaria.png" alt="Logo da Confeitaria La Vic" width="200"/><br/>
+        <strong>Confeitaria La Vic</strong>
+      </td>
+  </table>
+</div>
+
 # 🍰 Confeitaria La Vic - Sistema Web
 
 Este repositório contém o desenvolvimento do site oficial da **Confeitaria La Vic**, uma confeitaria real especializada em doces artesanais, localizada na cidade de São Paulo. Este projeto foi desenvolvido como parte do **Projeto Integrador da UNIVESP** com o objetivo de apoiar o crescimento da marca e oferecer uma plataforma digital eficiente para clientes e administração.
