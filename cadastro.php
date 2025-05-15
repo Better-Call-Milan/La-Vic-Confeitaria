@@ -3,7 +3,7 @@
   if(isset($_POST['submit']))
   {
 
-  include('config.php')
+  include('config.php');
 
   $nome = $_POST['nome'];
   $email = $_POST['email'];
@@ -11,7 +11,7 @@
   $data_nasc = $_POST['data_nasc'];
   $cep = $_POST['cep'];
   $rua = $_POST['rua'];
-  $numero_end = $_POST['numero_end']
+  $numero_end = $_POST['numero_end'];
   $complemento_end = $_POST['complemento_end'];
   $bairro = $_POST['bairro'];
   $cidade = $_POST['cidade'];
