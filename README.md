@@ -27,6 +27,7 @@ Este repositório contém o desenvolvimento do site oficial da **Confeitaria La 
 
 - HTML5
 - CSS3
+- Bootstrap
 - JavaScript (Vanilla)
 
 ---
@@ -54,5 +55,4 @@ Mais detalhes: [https://creativecommons.org/licenses/by-nc/4.0/](https://creativ
 
 ## 📣 Aviso
 
-Este é um projeto acadêmico criado com a permissão da marca **La Vic**, que é uma confeitaria real. O código e design aqui presentes foram elaborados **exclusivamente para fins educacionais** no contexto da UNIVESP.
-
+Este é um projeto acadêmico criado com a permissão da marca **La Vic**. O código e design aqui presentes foram elaborados **exclusivamente para fins educacionais** no contexto da UNIVESP.

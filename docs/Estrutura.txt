@@ -1,0 +1,32 @@
+ecommerce/
+├── index.html               ← Página inicial
+├── produtos.html            ← Lista de produtos
+├── produto.html             ← Detalhes de um produto
+├── carrinho.html            ← Carrinho de compras
+├── checkout.html            ← Finalização do pedido
+├── login.html               ← Login de usuários
+├── cadastro.html            ← Cadastro de usuários
+├── painel.html              ← Painel do usuário
+├── admin/
+│   ├── login.html           ← Login do admin
+│   ├── dashboard.html       ← Painel de controle
+│   ├── produtos.html        ← Gerenciar produtos
+│   ├── pedidos.html         ← Gerenciar pedidos
+│   ├── usuarios.html        ← Gerenciar usuários
+├── assets/
+│   ├── css/
+│   │   └── style.css
+│   ├── js/
+│   │   └── script.js
+│   └── img/
+├── includes/
+│   ├── header.php
+│   ├── footer.php
+├── backend/
+│   ├── conexao.php
+│   ├── login.php
+│   ├── cadastro.php
+│   ├── produto.php
+│   ├── carrinho.php
+│   └── pedido.php
+├── banco.sql                ← Script para criação do banco MySQL
