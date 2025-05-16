@@ -1,5 +1,5 @@
 <div align="center">
-        <img src="img/Social_Preview_Confeitaria_La_Vic.png" alt="Logo da Confeitaria La Vic" width="1000"/><br/>
+        <img src="assets/img/Social_Preview_Confeitaria_La_Vic.png" alt="Logo da Confeitaria La Vic" width="1000"/><br/>
 </div>
 
 # 🍰 Confeitaria La Vic - Sistema Web
