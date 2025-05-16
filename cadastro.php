@@ -20,7 +20,14 @@
   $confirmar_senha = $_POST['confirmar_senha'];
 
   $result = mysqli_query($conexao, "INSERT INTO cadastro(nome,email,telefone,data_nasc,cep,rua,numero_end,complemento_end,bairro,cidade,estado,senha,confirmar_senha) VALUES ('$nome','$email','$telefone','$data_nasc','$cep','$rua','$numero_end','$complemento_end','$bairro','$cidade','$estado','$senha','$confirmar_senha')");
-  }
+
+  if ($result) {
+        echo "Cadastro realizado com sucesso!";
+    } else {
+        echo "Erro ao cadastrar: " . mysqli_error($conexao);
+    }
+    
+}
   
 ?>
 
@@ -39,7 +46,7 @@
     <main>
     <section class="login-container">
       <h2>Cadastro de Cliente</h2>
-      <form action="config.php" method="POST`">
+    <form action="cadastro.php" method="POST">
         <label for="nome">Nome completo:</label>
         <input type="text" id="nome" name="nome" required />
         <br>
@@ -79,7 +86,7 @@
         <label for="confirmar_senha">Confirmar senha:</label>
         <input type="password" id="confirmar_senha" name="confirmar_senha" required />
         <br>
-        <button type="submit">Cadastrar</button>
+        <button type="submit" name="submit">Cadastrar</button>   
         <br>
         <button type="button" onclick="window.location.href='login.html'">Voltar</button>
       </form>
