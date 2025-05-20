@@ -17,12 +17,16 @@
   $estado = $_POST['estado'];
   $senha = $_POST['senha'];
   $confirmar_senha = $_POST['confirmar_senha'];
-  }
+  
 
   if ($senha !== $confirmar_senha) {
     echo "Erro: As senhas não coincidem!";
-  } else {  
-  $result = mysqli_query($conexao, "INSERT INTO cadastro(nome,email,telefone,data_nasc,cep,rua,numero_end,complemento_end,bairro,cidade,estado,senha,confirmar_senha) VALUES ('$nome','$email','$telefone','$data_nasc','$cep','$rua','$numero_end','$complemento_end','$bairro','$cidade','$estado','$senha','$confirmar_senha')");
+    exit;
+  }
+  
+  $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
+
+  $result = mysqli_query($conexao, "INSERT INTO cadastro(nome,email,telefone,data_nasc,cep,rua,numero_end,complemento_end,bairro,cidade,estado,senha) VALUES ('$nome','$email','$telefone','$data_nasc','$cep','$rua','$numero_end','$complemento_end','$bairro','$cidade','$estado','$senha_hash')");
 
 
   if ($result) {
@@ -30,8 +34,7 @@
     } else {               
         echo "Erro ao cadastrar: " . mysqli_error($conexao);
     }
-    
-}
+  }  
   
 ?>
 
