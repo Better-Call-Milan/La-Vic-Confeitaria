@@ -25,80 +25,103 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cadastro - Confeitaria La Vic</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cadastro - La Vic</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css"> <!-- Seu CSS personalizado -->
 </head>
 <body>
-    <header>
-        <a href="index.html"><img src="img/logo.png" alt="Confeitaria La Vic" class="logo"/></a>
-    </header>
-    <main>
-    <section class="login-container">
-      <h2>Cadastro de Cliente</h2>
-      <form action="config.php" method="POST`">
-        <label for="nome">Nome completo:</label>
-        <input type="text" id="nome" name="nome" required />
-        <br>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required />
-        <br>
-        <label for="telefone">Telefone:</label>
-        <input type="tel" id="telefone" name="telefone" required placeholder="(XX) XXXXX-XXXX" />
-        <br>
-        <label for="data_nasc">Data de nascimento:</label>
-        <input type="date" id="data_nasc" name="data_nasc" required placeholder="dd/mm/aaaa" />
-        <br>
-        <label for="cep">CEP:</label>
-        <input type="text" id="cep" name="cep" required placeholder="XXXXX-XXX" />
-        <br>
-        <label for="rua">Rua:</label>
-        <input type="text" id="rua" name="rua" required />
-        <br>
-        <label for="numero_end">Nº:</label>
-        <input type="text" id="numero_end" name="numero_end" required />
-        <br>
-        <label for="complemento_end">Complemento:</label>
-        <input type="text" id="complemento_end" name="complemento_end" />
-        <br>
-        <label for="bairro">Bairro:</label>
-        <input type="text" id="bairro" name="bairro" required />
-        <br>
-        <label for="cidade">Cidade:</label>
-        <input type="text" id="cidade" name="cidade" required />
-        <br>
-        <label for="estado">Estado:</label>
-        <input type="text" id="estado" name="estado" required />
-        <br>
-        <label for="senha">Senha:</label>
-        <input type="password" id="senha" name="senha" required />
-        <br>
-        <label for="confirmar_senha">Confirmar senha:</label>
-        <input type="password" id="confirmar_senha" name="confirmar_senha" required />
-        <br>
-        <button type="submit">Cadastrar</button>
-        <br>
-        <button type="button" onclick="window.location.href='login.html'">Voltar</button>
-      </form>
 
-      <div class="mensagem">Mensagem de erro ou de que deu tudo certo</div>
-    </section>
-    </main>
+  <!-- Navbar -->
+<nav class="navbar navbar-expand-lg custom-navbar">
+    <div class="container">
+      <!--Logo-->
+      <a class="navbar-brand" href="index.html">
+        <img src="assets/img/logo.png" alt="Confeitaria La Vic" height="70">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="listaprodutos.html">Produtos</a></li>
+          <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
+          <li class="nav-item"><a class="nav-link" href="login.php">Entrar ou Cadastrar-se</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-    <footer>
-        <div class="rodape">
-          <h3>Contato</h3>
-          <p>Whatsapp: (11) XXXXX-XXXX</p>
-          <p>Instagram: @XXXXXXXX</p>
-          <br>
-         &copy; 2025 Confeitaria La Vic. Todos os direitos reservados.
+  <!-- Cadastro Form -->
+  <div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="card shadow p-4 custom-form" style="width: 100%; max-width: 400px;">
+      <h2 class="text-center mb-4">Cadastrar-se</h2>
+      <form action="config.php" method="POST">
+        <div class="mb-3">
+          <label for="nome" class="form-label">Nome Completo</label>
+          <input type="text" class="form-control" id="nome" name="nome" required placeholder="Seu nome aqui...">
         </div>
-    </footer>
+        <div class="mb-3">
+          <label for="email" class="form-label">E-mail</label>
+          <input type="email" class="form-control" id="email" name="email" required placeholder="seuemail@exemplo.com">
+        </div>
+        <div class="mb-3">
+          <label for="telefone" class="form-label">Telefone</label>
+          <input type="tel" class="form-control" id="telefone" name="telefone" required placeholder="(XX) XXXXX-XXXX">
+        </div>
+        <div class="mb-3">
+          <label for="data_nasc">Data de nascimento</label>
+          <input type="date" class="form-control" id="data_nasc" name="data_nasc" required placeholder="dd/mm/aaaa"/>
+        </div>
+        <div class="mb-3">
+          <label for="cep">CEP</label>
+          <input type="text" class="form-control" id="cep" name="cep" required placeholder="XXXXX-XXX" />
+        </div>
+        <div class="mb-3">
+          <label for="rua">Rua:</label>
+          <input type="text" class="form-control" id="rua" name="rua" required />
+        </div>
+        <div class="mb-3">
+          <label for="numero_end">Nº:</label>
+          <input type="text" class="form-control" id="numero_end" name="numero_end" required />
+        </div>
+        <div class="mb-3">
+          <label for="complemento_end">Complemento:</label>
+          <input type="text" class="form-control" id="complemento_end" name="complemento_end" />
+        </div>
+        <div class="mb-3">
+          <label for="bairro">Bairro:</label>
+          <input type="text" class="form-control" id="bairro" name="bairro" required />
+        </div>
+        <div class="mb-3">
+          <label for="cidade">Cidade:</label>
+          <input type="text" class="form-control" id="cidade" name="cidade" required />
+        </div>
+        <div class="mb-3">
+          <label for="estado">Estado:</label>
+          <input type="text" class="form-control" id="estado" name="estado" required />
+        </div>
+        <div class="mb-3">
+          <label for="senha" class="form-label">Senha</label>
+          <input type="password" class="form-control" id="senha" name="senha" required placeholder="Digite sua senha">
+        </div>
+        <div class="mb-3">
+          <label for="confirmar_senha" class="form-label">Confirmar Senha</label>
+          <input type="password" class="form-control" id="confirmarsenha" name="confirmarsenha" required placeholder="Confirme sua senha">
+        </div>
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary btn-custom">Cadastrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
 
-  <script src="js/script.js"></script>
-  <script src="js/funcoes.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="assets/js/script.js"></script>
+  <script src="assets/js/funcoes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
