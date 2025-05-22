@@ -73,7 +73,7 @@
   <div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
     <div class="card shadow p-4 custom-form" style="width: 100%; max-width: 400px;">
       <h2 class="text-center mb-4">Cadastrar-se</h2>
-      <form action="config.php" method="POST">
+      <form action="cadastro.php" method="POST">
         <div class="mb-3">
           <label for="nome" class="form-label">Nome Completo</label>
           <input type="text" class="form-control" id="nome" name="nome" required placeholder="Seu nome aqui...">
@@ -124,10 +124,10 @@
         </div>
         <div class="mb-3">
           <label for="confirmar_senha" class="form-label">Confirmar Senha</label>
-          <input type="password" class="form-control" id="confirmarsenha" name="confirmarsenha" required placeholder="Confirme sua senha">
+          <input type="password" class="form-control" id="confirmarsenha" name="confirmar_senha" required placeholder="Confirme sua senha">
         </div>
         <div class="d-grid">
-          <button type="submit" class="btn btn-primary btn-custom">Cadastrar</button>
+          <button type="submit" name="submit" class="btn btn-primary btn-custom">Cadastrar</button>
         </div>
       </form>
     </div>
