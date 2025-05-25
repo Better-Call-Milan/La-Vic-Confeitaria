@@ -20,7 +20,8 @@ body {
 
 /* Banner */
 .banner-custom {
-    background-image: url(https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png);
+    /*background-image: url(https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png);*/
+    background-image: url('../img/produtos/Bolos/4.png');
     background-size: cover;         /* cobre toda a área */
     background-position: center;    /* centraliza a imagem */
     background-repeat: no-repeat;
@@ -64,6 +65,7 @@ body {
 }
 
 .custom-footer {
+    margin-top: 25%;
     background-color: white;
     border-top: 1px solid #BFDBC8 ;
 }
@@ -122,4 +124,9 @@ body {
 /* Dados do Usuário */
 .userdados-custom {
     color: black;
+}
+
+/* Contato */
+.pblack {
+    color: black !important;
 }

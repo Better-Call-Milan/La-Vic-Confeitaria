@@ -119,6 +119,11 @@ session_start();
     </div>
   </div>
 
+  <!-- Footer -->
+  <footer class=" text-white text-center py-4 custom-footer">
+    <p>&copy; 2025 Confeitaria La Vic. Todos os direitos reservados.</p>
+  </footer>
+
   <!-- Bootstrap JS -->
   <script src="assets/js/script.js"></script>
   <script src="assets/js/funcoes.js"></script>

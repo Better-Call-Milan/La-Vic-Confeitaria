@@ -45,13 +45,13 @@ session_start();
           <label for="senha" class="form-label">Senha</label>
           <input type="password" class="form-control" id="senha" name="senha" required placeholder="Digite sua senha">
         </div>
-        <div class="mb-3">
+        <!--<div class="mb-3"> Não precisamos
         <label for="tipo" class="form-label">Tipo de acesso</label>
         <select class="form-select custom-select" id="tipo" name="tipo" required>
             <option value="cliente" selected>Cliente</option>
             <option value="admin">Administrador</option>
         </select>
-        </div>
+        </div>-->
         <div class="d-grid">
           <button type="submit" class="btn btn-primary btn-custom">Entrar</button>
         </div>
@@ -70,6 +70,11 @@ session_start();
       </div>
     </div>
   </div>
+
+  <!-- Footer -->
+  <footer class=" text-white text-center py-4 custom-footer">
+    <p>&copy; 2025 Confeitaria La Vic. Todos os direitos reservados.</p>
+  </footer>
 
   <!-- Bootstrap JS & JS -->
   <script src="assets/js/script.js"></script>

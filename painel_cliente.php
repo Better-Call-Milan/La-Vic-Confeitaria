@@ -25,7 +25,6 @@ include('verifica_login.php');
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <!--<li class="nav-item"><a class="nav-link" href="listaprodutos.html">Produtos</a></li>-->
           <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
           <li class="nav-item"><a class="nav-link" href="logout.php">Sair</a></li>
         </ul>
@@ -39,7 +38,7 @@ include('verifica_login.php');
     <h2 class="text-center mb-5">Olá, <?php echo htmlspecialchars($_SESSION['nome']); ?>!</h2>
     <div class="mt-5 text-center">
       <!--<h4>Resumo Recente</h4>-->
-      <p class="text-muted">Está com fome? Procure o doce certo para a ocasião e faça suas compras!</p>
+      <p class="text-muted">Está com fome? Escolha o doce certo para a ocasião e faça suas compras!</p>
     </div>
     <div class="row justify-content-center g-4">
       <div class="col-md-4 col-lg-3">
