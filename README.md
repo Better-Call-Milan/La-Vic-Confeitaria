@@ -29,6 +29,7 @@ Este repositório contém o desenvolvimento do site oficial da **Confeitaria La 
 - CSS3
 - Bootstrap
 - JavaScript (Vanilla)
+- MySQL
 
 ---
 

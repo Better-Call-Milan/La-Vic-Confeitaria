@@ -72,18 +72,31 @@ body {
 }
 
 .custom-card {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    border: none;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .custom-card:hover {
-    transform: scale(1.05); /* 5% */
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
+.custom-card .card-body {
+    padding: 2rem;
+}
+.custom-card h5 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
 .custom-card p {
-    color: black;
+    color: white;
 }
 
 /* Formulário */
 .custom-form {
+    margin-top: 144px !important;
+    margin-bottom: 144px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -91,8 +104,19 @@ body {
 .custom-link {
     color: #F3B8BB;
 }
+.custom-link-verde {
+    color: green;
+}
 .custom-link:hover {
     color: #dd979b;
+}
+.custom-cadastro {
+    text-align: center;
+    color: green;
+}
+.custom-cadastro-vermelho {
+    text-align: center;
+    color: red;
 }
 
 /* Dados do Usuário */

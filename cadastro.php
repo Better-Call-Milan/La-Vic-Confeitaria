@@ -1,27 +1,5 @@
 <?php
-
-  if(isset($_POST['submit']))
-  {
-
-  include('config.php')
-
-  $nome = $_POST['nome'];
-  $email = $_POST['email'];
-  $telefone = $_POST['telefone'];
-  $data_nasc = $_POST['data_nasc'];
-  $cep = $_POST['cep'];
-  $rua = $_POST['rua'];
-  $numero_end = $_POST['numero_end']
-  $complemento_end = $_POST['complemento_end'];
-  $bairro = $_POST['bairro'];
-  $cidade = $_POST['cidade'];
-  $estado = $_POST['estado'];
-  $senha = $_POST['senha'];
-  $confirmar_senha = $_POST['confirmar_senha'];
-
-  $result = mysqli_query($conexao, "INSERT INTO cadastro(nome,email,telefone,data_nasc,cep,rua,numero_end,complemento_end,bairro,cidade,estado,senha,confirmar_senha) VALUES ('$nome','$email','$telefone','$data_nasc','$cep','$rua','$numero_end','$complemento_end','$bairro','$cidade','$estado','$senha','$confirmar_senha')");
-  }
-  
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +27,7 @@
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="listaprodutos.html">Produtos</a></li>
           <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
-          <li class="nav-item"><a class="nav-link" href="login.php">Entrar ou Cadastrar-se</a></li>
+          <li class="nav-item"><a class="nav-link" href="entrar.php">Entrar ou Cadastrar-se</a></li>
         </ul>
       </div>
     </div>
@@ -59,7 +37,26 @@
   <div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
     <div class="card shadow p-4 custom-form" style="width: 100%; max-width: 400px;">
       <h2 class="text-center mb-4">Cadastrar-se</h2>
-      <form action="config.php" method="POST">
+      <!-- Avisos de cadastro efetuado -->
+      <?php 
+      if(isset($_SESSION['status_cadastro'])):
+      ?>
+      <p class="custom-cadastro">Cadastro Efetuado!</p>
+      <p class="custom-cadastro">Faça o login informando o seu email e senha <a class="custom-link-verde" href="entrar.php">aqui</a></p>
+      <?php
+      endif;
+      unset($_SESSION['status_cadastro']);
+      ?>
+      <!-- Avisos de cadastro já existente -->
+      <?php 
+      if(isset($_SESSION['usuario_existe'])):
+      ?>
+      <p class="custom-cadastro-vermelho">Usuário escolhido já existe. Imforme outro e tente novamente.</p>
+      <?php
+      endif;
+      unset($_SESSION['usuario_existe']);
+      ?>
+      <form action="cadastrar.php" method="POST">
         <div class="mb-3">
           <label for="nome" class="form-label">Nome Completo</label>
           <input type="text" class="form-control" id="nome" name="nome" required placeholder="Seu nome aqui...">
@@ -81,27 +78,27 @@
           <input type="text" class="form-control" id="cep" name="cep" required placeholder="XXXXX-XXX" />
         </div>
         <div class="mb-3">
-          <label for="rua">Rua:</label>
+          <label for="rua">Rua</label>
           <input type="text" class="form-control" id="rua" name="rua" required />
         </div>
         <div class="mb-3">
-          <label for="numero_end">Nº:</label>
+          <label for="numero_end">Nº</label>
           <input type="text" class="form-control" id="numero_end" name="numero_end" required />
         </div>
         <div class="mb-3">
-          <label for="complemento_end">Complemento:</label>
+          <label for="complemento_end">Complemento</label>
           <input type="text" class="form-control" id="complemento_end" name="complemento_end" />
         </div>
         <div class="mb-3">
-          <label for="bairro">Bairro:</label>
+          <label for="bairro">Bairro</label>
           <input type="text" class="form-control" id="bairro" name="bairro" required />
         </div>
         <div class="mb-3">
-          <label for="cidade">Cidade:</label>
+          <label for="cidade">Cidade</label>
           <input type="text" class="form-control" id="cidade" name="cidade" required />
         </div>
         <div class="mb-3">
-          <label for="estado">Estado:</label>
+          <label for="estado">Estado</label>
           <input type="text" class="form-control" id="estado" name="estado" required />
         </div>
         <div class="mb-3">

@@ -1,68 +1,32 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Login - La Vic</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css"> <!-- Seu CSS personalizado -->
-</head>
-<body>
+<?php
+session_start();
+include ('conexao.php');
 
-  <!-- Navbar -->
-<nav class="navbar navbar-expand-lg custom-navbar">
-    <div class="container">
-      <!--Logo-->
-      <a class="navbar-brand" href="index.html">
-        <img src="assets/img/logo.png" alt="Confeitaria La Vic" height="70">
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="listaprodutos.html">Produtos</a></li>
-          <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
-          <li class="nav-item"><a class="nav-link" href="login.php">Entrar ou Cadastrar-se</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+// Evitando que o usuario acesse a pagina login.php pelo buscador sem ter digitado email e senha.
+if(empty($_POST['email']) || empty($_POST['senha'])) {
+	header('Location: entrar.php');
+	exit();
+}
 
-  <!-- Login Form -->
-  <div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
-    <div class="card shadow p-4 custom-form" style="width: 100%; max-width: 400px;">
-      <h2 class="text-center mb-4">Entrar na conta</h2>
-      <form id="loginForm"> <!--action="#" method="POST"-->
-        <div class="mb-3">
-          <label for="email" class="form-label">E-mail</label>
-          <input type="email" class="form-control" id="email" name="email" required placeholder="seuemail@exemplo.com">
-        </div>
-        <div class="mb-3">
-          <label for="senha" class="form-label">Senha</label>
-          <input type="password" class="form-control" id="senha" name="senha" required placeholder="Digite sua senha">
-        </div>
-        <div class="mb-3">
-        <label for="tipo" class="form-label">Tipo de acesso</label>
-        <select class="form-select custom-select" id="tipo" name="tipo" required>
-            <option value="cliente" selected>Cliente</option>
-            <option value="admin">Administrador</option>
-        </select>
-        </div>
-        <div class="d-grid">
-          <button type="submit" class="btn btn-primary btn-custom">Entrar</button>
-        </div>
-      </form>
-      <div class="text-center mt-3">
-        <!--<a href="#">Esqueceu a senha?</a><br> -->
-        <p id="mensagemLogin" class="mensagem"></p>
-        <a class="custom-link" href="cadastro.php">Não tem conta? Cadastre-se</a>
-      </div>
-    </div>
-  </div>
+$email = mysqli_real_escape_string($conexao, $_POST['email']);
+$senha = mysqli_real_escape_string($conexao, $_POST['senha']);
 
-  <!-- Bootstrap JS & JS -->
-  <script src="assets/js/script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+$query = "select nome from usuarios where email = '{$email}' and senha = md5('{$senha}')";
+
+//echo $query;exit;
+$result = mysqli_query($conexao, $query);
+
+$row = mysqli_num_rows($result);
+//echo $row;exit;
+
+if($row == 1) {
+	$usuario_bd = mysqli_fetch_assoc($result);
+	$_SESSION['nome'] = $usuario_bd['nome'];
+	header('Location: painel_cliente.php');
+	exit();
+} else {
+	$_SESSION['nao_autenticado'] = true;
+	header('Location: entrar.php');
+	exit();
+}
+
