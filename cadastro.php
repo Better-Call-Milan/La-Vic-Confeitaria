@@ -67,7 +67,8 @@ session_start();
         </div>
         <div class="mb-3">
           <label for="telefone" class="form-label">Telefone</label>
-          <input type="tel" class="form-control" id="telefone" name="telefone" required placeholder="(XX) XXXXX-XXXX">
+          <input type="tel" class="form-control" id="telefone" name="telefone" required placeholder="(XX) XXXXX-XXXX"
+          maxlength="15" pattern="\(\d{2}\)\s?\d{4,5}-\d{4}" title="Formato esperado: (XX) XXXXX-XXXX">
         </div>
         <div class="mb-3">
           <label for="data_nasc">Data de nascimento</label>
@@ -99,18 +100,20 @@ session_start();
         </div>
         <div class="mb-3">
           <label for="estado">Estado</label>
-          <input type="text" class="form-control" id="estado" name="estado" required />
+          <input type="text" class="form-control" id="estado" name="estado" maxlength="2" required placeholder="SP" style="text-transform:uppercase;" pattern="[A-Za-z]{2}" title="Apenas a sigla do estado com 2 letras. Ex: SP, RJ">
         </div>
         <div class="mb-3">
           <label for="senha" class="form-label">Senha</label>
           <input type="password" class="form-control" id="senha" name="senha" required placeholder="Digite sua senha">
+          <small id="senhaFeedback" class="form-text text-muted"></small>
         </div>
         <div class="mb-3">
           <label for="confirmar_senha" class="form-label">Confirmar Senha</label>
-          <input type="password" class="form-control" id="confirmarsenha" name="confirmarsenha" required placeholder="Confirme sua senha">
+          <input type="password" class="form-control" id="confirmarsenha" name="confirmar_senha" required placeholder="Confirme sua senha">
+          <small id="confirmarSenhaFeedback" class="form-text text-muted"></small>
         </div>
         <div class="d-grid">
-          <button type="submit" class="btn btn-primary btn-custom">Cadastrar</button>
+          <button type="submit" name="submit" class="btn btn-primary btn-custom">Cadastrar</button>
         </div>
       </form>
     </div>
@@ -120,5 +123,97 @@ session_start();
   <script src="assets/js/script.js"></script>
   <script src="assets/js/funcoes.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+  // MASCARA TELEFONE
+  const telInput = document.getElementById("telefone");
+  telInput.addEventListener("input", function () {
+    let valor = telInput.value.replace(/\D/g, "");
+    if (valor.length > 11) valor = valor.slice(0, 11);
+
+    let formatado = "";
+    if (valor.length > 0) formatado += "(" + valor.substring(0, 2);
+    if (valor.length >= 3) formatado += ") " + valor.substring(2, 7);
+    if (valor.length >= 8) formatado += "-" + valor.substring(7, 11);
+
+    telInput.value = formatado;
+  });
+
+  // MASCARA CEP
+  const cepInput = document.getElementById("cep");
+  cepInput.addEventListener("input", function () {
+    let valor = cepInput.value.replace(/\D/g, "");
+    if (valor.length > 8) valor = valor.slice(0, 8);
+
+    let formatado = valor;
+    if (valor.length >= 6) {
+      formatado = valor.substring(0, 5) + "-" + valor.substring(5, 8);
+    }
+
+    cepInput.value = formatado;
+  });
+
+  // MASCARA ESTADO: Forçar maiúsculas ao digitar
+  const estadoInput = document.getElementById("estado");
+  estadoInput.addEventListener("input", function () {
+    this.value = this.value.toUpperCase().replace(/[^A-Z]/g, "").slice(0, 2);
+  });
+
+  // MASCARA NÚMERO_END: Só números
+  const numeroEndInput = document.getElementById("numero_end");
+  numeroEndInput.addEventListener("input", function () {
+    this.value = this.value.replace(/\D/g, "");
+  });
+});
+  </script>
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const senhaInput = document.getElementById("senha");
+  const confirmarSenhaInput = document.getElementById("confirmarsenha");
+  const senhaFeedback = document.getElementById("senhaFeedback");
+  const confirmarFeedback = document.getElementById("confirmarSenhaFeedback");
+
+  function verificarForcaSenha(senha) {
+    const regexMaiuscula = /[A-Z]/;
+    const regexMinuscula = /[a-z]/;
+    const regexNumero = /[0-9]/;
+    const regexEspecial = /[\W_]/;
+
+    if (senha.length < 8) {
+      return "❌ A senha deve ter pelo menos 8 caracteres.";
+    }
+    if (!regexMaiuscula.test(senha)) {
+      return "❌ A senha deve conter ao menos 1 letra maiúscula.";
+    }
+    if (!regexMinuscula.test(senha)) {
+      return "❌ A senha deve conter ao menos 1 letra minúscula.";
+    }
+    if (!regexNumero.test(senha)) {
+      return "❌ A senha deve conter ao menos 1 número.";
+    }
+    if (!regexEspecial.test(senha)) {
+      return "❌ A senha deve conter ao menos 1 caractere especial.";
+    }
+
+    return "✅ Senha forte!";
+  }
+
+  senhaInput.addEventListener("input", function () {
+    const mensagem = verificarForcaSenha(senhaInput.value);
+    senhaFeedback.textContent = mensagem;
+    senhaFeedback.style.color = mensagem.includes("✅") ? "green" : "red";
+  });
+
+  confirmarSenhaInput.addEventListener("input", function () {
+    if (confirmarSenhaInput.value !== senhaInput.value) {
+      confirmarFeedback.textContent = "❌ As senhas não coincidem.";
+      confirmarFeedback.style.color = "red";
+    } else {
+      confirmarFeedback.textContent = "✅ Senhas conferem.";
+      confirmarFeedback.style.color = "green";
+    }
+  });
+});
+</script>
 </body>
 </html>
