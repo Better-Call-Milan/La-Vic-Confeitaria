@@ -46,7 +46,7 @@ include('verifica_login.php');
           <div class="card-body text-center">
             <h5 class="card-title">Fazer um Pedido</h5>
             <p class="card-text">Venha ver nossas delícias!</p>
-            <a href="produtos.html" class="btn btn-light btn-sm">Avançar</a>
+            <a href="pedidos.php" class="btn btn-light btn-sm">Avançar</a>
           </div>
         </div>
       </div>
@@ -55,7 +55,7 @@ include('verifica_login.php');
           <div class="card-body text-center">
             <h5 class="card-title">Meus Pedidos</h5>
             <p class="card-text">Ansioso? Acompanhe seu pedido!</p>
-            <a href="pedidos.html" class="btn btn-light btn-sm">Verificar</a>
+            <a href="meus-pedidos-view.php" class="btn btn-light btn-sm">Verificar</a>
           </div>
         </div>
       </div>

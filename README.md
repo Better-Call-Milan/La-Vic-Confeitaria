@@ -29,6 +29,7 @@ Este repositório contém o desenvolvimento do site oficial da **Confeitaria La 
 - CSS3
 - Bootstrap
 - JavaScript (Vanilla)
+- PHP
 - MySQL
 
 ---
@@ -37,7 +38,7 @@ Este repositório contém o desenvolvimento do site oficial da **Confeitaria La 
 
 - Danrlei Graia Dos Santos
 - Fabiano Andrade Pinheiro
-- Gustavo Milan De farias
+- Gustavo Milan De Farias
 - Karen Kuniyoshi Nakaoka
 - Hiel Souza De Freitas
 - João Victor Dos Santos Sales

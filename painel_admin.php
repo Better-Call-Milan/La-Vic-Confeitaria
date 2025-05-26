@@ -53,7 +53,7 @@ include('verifica_login.php');
           <div class="card-body text-center">
             <h5 class="card-title">Pedidos</h5>
             <p class="card-text">Veja todas as encomendas</p>
-            <a href="pedidos.html" class="btn btn-light btn-sm">Ver Pedidos</a>
+            <a href="pedidos-view.php" class="btn btn-light btn-sm">Ver Pedidos</a>
           </div>
         </div>
       </div>
@@ -62,7 +62,7 @@ include('verifica_login.php');
           <div class="card-body text-center">
             <h5 class="card-title">Usuários</h5>
             <p class="card-text">Saiba quem está comprando</p>
-            <a href="usuarios.html" class="btn btn-light btn-sm">Gerenciar</a>
+            <a href="usuarios.php" class="btn btn-light btn-sm">Gerenciar</a>
           </div>
         </div>
       </div>
