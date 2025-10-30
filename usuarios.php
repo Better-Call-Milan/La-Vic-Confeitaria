@@ -45,10 +45,13 @@ include('verifica_login.php');
                 <div class="card">
                     <div class="card-header">
                     <h4> Lista de Usuários
-                        <a href="usuario-create.php" class="btn btn-primary float-end">Adicionar usuário</a>
+                        <a href="painel_admin.php" class="btn btn-danger float-end">Voltar</a>
+                        <a href="usuario-create.php" class="btn btn-primary float-end me-2">Adicionar usuário</a>
                     </h4>
                     </div>
+                    <!--Tabela de Admins-->
                     <div class="card-body table-responsive">
+                      <h6>Admins</h6>
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
@@ -56,14 +59,14 @@ include('verifica_login.php');
                                     <th>NOME</th>
                                     <th>EMAIL</th>
                                     <th>TELEFONE</th>
-                                    <th>DATA DE NASCIMENTO</th>
-                                    <th>CEP</th>
-                                    <th>RUA</th>
-                                    <th>NUMERO</th>
-                                    <th>COMPLEMENTO</th>
-                                    <th>BAIRRO</th>
-                                    <th>CIDADE</th>
-                                    <th>ESTADO</th>
+                                      <!--<th>DATA DE NASCIMENTO</th>
+                                      <th>CEP</th>
+                                      <th>RUA</th>
+                                      <th>NUMERO</th>
+                                      <th>COMPLEMENTO</th>
+                                      <th>BAIRRO</th>
+                                      <th>CIDADE</th>
+                                      <th>ESTADO</th>-->
                                     <th>SENHA</th>
                                     <th>TIPO</th>
                                     <th>DATA DO CADASTRO</th>
@@ -72,7 +75,7 @@ include('verifica_login.php');
                             </thead>
                             <tbody>
                                 <?php
-                                $sql = 'SELECT * FROM usuarios';
+                                $sql = "SELECT * FROM usuarios WHERE tipo = 'admin' ORDER BY id ASC";
                                 $usuarios = mysqli_query($conexao, $sql);
                                 if (mysqli_num_rows($usuarios) > 0) {
                                     foreach($usuarios as $usuario){
@@ -82,14 +85,81 @@ include('verifica_login.php');
                                     <td><?=$usuario['nome']?></td>
                                     <td><?=$usuario['email']?></td>
                                     <td><?=$usuario['telefone']?></td>
-                                    <td><?=date('d/m/Y', strtotime($usuario['data_nascimento']))?></td>
+                                    <!--<td><?=date('d/m/Y', strtotime($usuario['data_nascimento']))?></td>
                                     <td><?=$usuario['cep']?></td>
                                     <td><?=$usuario['rua']?></td>
                                     <td><?=$usuario['numero']?></td>
                                     <td><?=$usuario['complemento']?></td>
                                     <td><?=$usuario['bairro']?></td>
                                     <td><?=$usuario['cidade']?></td>
-                                    <td><?=$usuario['estado']?></td>
+                                    <td><?=$usuario['estado']?></td>-->
+                                    <td><?=$usuario['senha']?></td>
+                                    <td><?=$usuario['tipo']?></td>
+                                    <td><?=$usuario['data_cadastro']?></td>
+                                    <td>
+                                        <a href="usuario-view.php?id=<?=$usuario['id']?>" style="width: 100%; height: 100%; border-radius: 0;" class="btn btn-secondary btn-sm">Visualizar</a>
+                                        <a href="usuario-edit.php?id=<?=$usuario['id']?>" style="width: 100%; height: 100%; border-radius: 0;" class="btn btn-success btn-sm">Editar</a>
+                                        <form action="" method="POST" class="d-inline">
+                                            <button type="submit" name="delete_usuario" value="1" style="width: 100%; height: 100%; border-radius: 0;" class="btn btn-danger btn-sm">
+                                            Excluir
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <?php
+                                }
+                                } else {
+                                    echo '<h5>Nenhum Usuário Encontrado.</h5>';
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!--Tabela de Clientes-->
+                    <div class="card-body table-responsive">
+                      <h6>Clientes</h6>
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>NOME</th>
+                                    <th>EMAIL</th>
+                                    <th>TELEFONE</th>
+                                      <!--<th>DATA DE NASCIMENTO</th>
+                                      <th>CEP</th>
+                                      <th>RUA</th>
+                                      <th>NUMERO</th>
+                                      <th>COMPLEMENTO</th>
+                                      <th>BAIRRO</th>
+                                      <th>CIDADE</th>
+                                      <th>ESTADO</th>-->
+                                    <th>SENHA</th>
+                                    <th>TIPO</th>
+                                    <th>DATA DO CADASTRO</th>
+                                    <th>AÇÕES</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $sql = "SELECT * FROM usuarios WHERE tipo = 'cliente' ORDER BY id ASC";
+                                $usuarios = mysqli_query($conexao, $sql);
+                                if (mysqli_num_rows($usuarios) > 0) {
+                                    foreach($usuarios as $usuario){
+                                ?>
+                                <tr>
+                                    <td><?=$usuario['id']?></td>
+                                    <td><?=$usuario['nome']?></td>
+                                    <td><?=$usuario['email']?></td>
+                                    <td><?=$usuario['telefone']?></td>
+                                    <!--<td><?=date('d/m/Y', strtotime($usuario['data_nascimento']))?></td>
+                                    <td><?=$usuario['cep']?></td>
+                                    <td><?=$usuario['rua']?></td>
+                                    <td><?=$usuario['numero']?></td>
+                                    <td><?=$usuario['complemento']?></td>
+                                    <td><?=$usuario['bairro']?></td>
+                                    <td><?=$usuario['cidade']?></td>
+                                    <td><?=$usuario['estado']?></td>-->
                                     <td><?=$usuario['senha']?></td>
                                     <td><?=$usuario['tipo']?></td>
                                     <td><?=$usuario['data_cadastro']?></td>

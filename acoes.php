@@ -95,4 +95,52 @@ if (isset($_POST['create_pedido'])) {
     }
 }
 
+
+if (isset($_POST['update_meus_dados'])) {
+    $usuario_id = $_SESSION['id']; // cliente logado
+
+    $nome = mysqli_real_escape_string($conexao, trim($_POST['nome']));
+    $email = mysqli_real_escape_string($conexao, trim($_POST['email']));
+    $telefone = mysqli_real_escape_string($conexao, trim($_POST['telefone']));
+    $cep = mysqli_real_escape_string($conexao, trim($_POST['cep']));
+    $rua = mysqli_real_escape_string($conexao, trim($_POST['rua']));
+    $numero_end = mysqli_real_escape_string($conexao, trim($_POST['numero_end']));
+    $complemento_end = mysqli_real_escape_string($conexao, trim($_POST['complemento_end']));
+    $bairro = mysqli_real_escape_string($conexao, trim($_POST['bairro']));
+    $cidade = mysqli_real_escape_string($conexao, trim($_POST['cidade']));
+    $estado = mysqli_real_escape_string($conexao, trim($_POST['estado']));
+    $senha = trim($_POST['senha']);
+
+    // Atualiza dados (senha só se o campo não estiver vazio)
+    $sql = "UPDATE usuarios SET 
+                nome = '$nome',
+                email = '$email',
+                telefone = '$telefone',
+                cep = '$cep',
+                rua = '$rua',
+                numero = '$numero_end',
+                complemento = '$complemento_end',
+                bairro = '$bairro',
+                cidade = '$cidade',
+                estado = '$estado'";
+
+    if (!empty($senha)) {
+        $sql .= ", senha='" . md5($senha) . "'";
+    }
+
+    $sql .= " WHERE id = '$usuario_id'";
+
+    mysqli_query($conexao, $sql);
+
+    if (mysqli_affected_rows($conexao) > 0) {
+        $_SESSION['mensagem'] = 'Seus dados foram atualizados com sucesso!';
+        header('Location: painel_cliente.php?msg=atualizado');
+        exit;
+    } else {
+        $_SESSION['mensagem'] = 'Nenhuma alteração foi feita.';
+        header('Location: painel_cliente.php?msg=sem_alteracao');
+        exit;
+    }
+}
+
 ?>

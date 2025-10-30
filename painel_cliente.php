@@ -36,6 +36,15 @@ include('verifica_login.php');
 
   <div class="container mt-5">
     <h2 class="text-center mb-5">Olá, <?php echo htmlspecialchars($_SESSION['nome']); ?>!</h2>
+
+    <!--Mensagem de atualização de dados-->
+    <?php if (isset($_GET['msg']) && $_GET['msg'] == 'atualizado'): ?>
+    <div class="alert alert-success text-center">Dados atualizados com sucesso!</div>
+    <?php elseif (isset($_GET['msg']) && $_GET['msg'] == 'sem_alteracao'): ?>
+    <div class="alert alert-warning text-center">Nenhuma alteração detectada.</div>
+    <?php endif; ?>
+
+
     <div class="mt-5 text-center">
       <!--<h4>Resumo Recente</h4>-->
       <p class="text-muted">Está com fome? Escolha o doce certo para a ocasião e faça suas compras!</p>
@@ -64,7 +73,10 @@ include('verifica_login.php');
           <div class="card-body text-center">
             <h5 class="card-title">Alterar Dados</h5>
             <p class="card-text">Precisa corrigir algo?</p>
-            <a href="usuarios.html" class="btn btn-light btn-sm">Gerenciar</a>
+
+            <a href="meus-dados-edit.php?id=<?= $_SESSION['id'] ?>" class="btn btn-light btn-sm">Gerenciar</a>
+
+
           </div>
         </div>
       </div>

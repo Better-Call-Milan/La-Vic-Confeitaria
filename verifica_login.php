@@ -1,7 +1,9 @@
 <?php
 session_start();
-//Se a sessão do usuario NÃO existir ele volta pro login
-if(!$_SESSION['nome']) {
-	header('Location: entrar.php');
-	exit();
+
+// Verifica se o usuário está logado corretamente
+if (!isset($_SESSION['id']) || !isset($_SESSION['nome']) || !isset($_SESSION['tipo'])) {
+    header('Location: entrar.php');
+    exit();
 }
+?>
