@@ -2,6 +2,8 @@
 session_start();
 require 'conexao.php';
 
+//CRUD DE USUARIOS
+//Criar Usuario
 if (isset($_POST['create_usuario'])) {
     $tipo = mysqli_real_escape_string($conexao, trim($_POST['tipo']));
     $nome = mysqli_real_escape_string($conexao, trim($_POST['nome']));
@@ -19,7 +21,6 @@ if (isset($_POST['create_usuario'])) {
 
 //Inserindo tudo no banco.
 $sql = "INSERT INTO usuarios (tipo, nome, email, telefone, data_nascimento, cep, rua, numero, complemento, bairro, cidade, estado, senha, data_cadastro) VALUES ('$tipo', '$nome', '$email', '$telefone', '$data_nasc', '$cep', '$rua', '$numero_end', '$complemento_end', '$bairro', '$cidade', '$estado', '$senha', NOW())";
-
 mysqli_query($conexao, $sql);
 
     if (mysqli_affected_rows($conexao) > 0 ) {
@@ -33,6 +34,7 @@ mysqli_query($conexao, $sql);
     }
 }
 
+//Atualizar Usuario (Admin)
 if (isset($_POST['update_usuario'])) {
     $usuario_id = mysqli_real_escape_string($conexao, $_POST['usuario_id']);
 
@@ -68,34 +70,7 @@ if (!empty($senha)) {
 	}
 }
 
-
-
-
-if (isset($_POST['create_pedido'])) {
-    $id_usuario = $_SESSION['id']; // ou outro identificador do cliente
-    $produtos = $_POST['id_produto'];
-    $quantidades = $_POST['quantidade'];
-
-    // Criar pedido
-    $queryPedido = "INSERT INTO pedidos (id_usuario, data_criacao) VALUES ($id_usuario, NOW())";
-    if (mysqli_query($conexao, $queryPedido)) {
-        $id_pedido = mysqli_insert_id($conexao);
-
-        foreach ($produtos as $i => $id_produto) {
-            $quantidade = $quantidades[$i];
-            $queryItem = "INSERT INTO itens_pedido (id_pedido, id_produto, quantidade) 
-                          VALUES ($id_pedido, $id_produto, $quantidade)";
-            mysqli_query($conexao, $queryItem);
-        }
-
-        header("Location: painel_cliente.php?msg=Pedido criado com sucesso");
-        exit();
-    } else {
-        echo "Erro ao criar pedido.";
-    }
-}
-
-
+//Atualizar Usuario (Pessoal)
 if (isset($_POST['update_meus_dados'])) {
     $usuario_id = $_SESSION['id']; // cliente logado
 
@@ -140,6 +115,64 @@ if (isset($_POST['update_meus_dados'])) {
         $_SESSION['mensagem'] = 'Nenhuma alteração foi feita.';
         header('Location: painel_cliente.php?msg=sem_alteracao');
         exit;
+    }
+}
+
+
+//CRUD DE PRODUTOS
+//Criar Produto
+// Criar produto
+if (isset($_POST['create_produto'])) {
+    $nome = mysqli_real_escape_string($conexao, $_POST['nome']);
+    $descricao = mysqli_real_escape_string($conexao, $_POST['descricao']);
+    $preco = $_POST['preco'];
+
+    // Upload da imagem
+    $imagem_nome = null;
+    if (isset($_FILES['imagem']) && $_FILES['imagem']['error'] == 0) {
+        $imagem_nome = 'uploads/' . basename($_FILES['imagem']['name']);
+        move_uploaded_file($_FILES['imagem']['tmp_name'], $imagem_nome);
+    }
+
+    $sql = "INSERT INTO produtos (nome, descricao, preco, imagem) VALUES ('$nome', '$descricao', '$preco', '$imagem_nome')";
+    if (mysqli_query($conexao, $sql)) {
+        header('Location: produtos.php?msg=Produto criado com sucesso!');
+        exit;
+    } else {
+        echo "Erro ao criar produto: " . mysqli_error($conexao);
+    }
+}
+
+//Atualizar Produto
+if (isset($_POST['update_produto'])) {
+    $id = mysqli_real_escape_string($conexao, $_POST['produto_id']);
+    $nome = mysqli_real_escape_string($conexao, $_POST['nome']);
+    $descricao = mysqli_real_escape_string($conexao, $_POST['descricao']);
+    $preco = mysqli_real_escape_string($conexao, $_POST['preco']);
+
+    // Upload de imagem (opcional)
+    $imagem = $_FILES['imagem']['name'];
+    if (!empty($imagem)) {
+        $target_dir = "uploads/";
+        $target_file = $target_dir . basename($imagem);
+        move_uploaded_file($_FILES['imagem']['tmp_name'], $target_file);
+        $update_image_sql = ", imagem='$imagem'";
+    } else {
+        $update_image_sql = "";
+    }
+
+    $sql = "UPDATE produtos SET 
+            nome='$nome', descricao='$descricao', preco='$preco'
+            $update_image_sql
+            WHERE id='$id'";
+    
+    $query = mysqli_query($conexao, $sql);
+
+    if ($query) {
+        header("Location: produtos.php?msg=Produto atualizado com sucesso");
+        exit();
+    } else {
+        echo "Erro ao atualizar produto.";
     }
 }
 

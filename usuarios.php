@@ -2,6 +2,34 @@
 require('conexao.php');
 include('verifica_login.php');
 
+// Verifica se o botão "Excluir" foi clicado
+if (isset($_POST['delete_usuario'])) {
+    $id_usuario = intval($_POST['delete_usuario']);
+
+    // Busca o usuário antes de excluir
+    $query = "SELECT * FROM usuarios WHERE id = $id_usuario";
+    $resultado = mysqli_query($conexao, $query);
+
+    if ($resultado && mysqli_num_rows($resultado) > 0) {
+        // Deleta o usuário do banco de dados
+        $delete_query = "DELETE FROM usuarios WHERE id = $id_usuario";
+        if (mysqli_query($conexao, $delete_query)) {
+            $_SESSION['mensagem'] = "Usuário excluído com sucesso!";
+            $_SESSION['tipo_mensagem'] = "success";
+        } else {
+            $_SESSION['mensagem'] = "Erro ao excluir o usuário.";
+            $_SESSION['tipo_mensagem'] = "danger";
+        }
+    } else {
+        $_SESSION['mensagem'] = "Usuário não encontrado.";
+        $_SESSION['tipo_mensagem'] = "warning";
+    }
+
+    // Redireciona para evitar reenvio do formulário ao atualizar a página
+    header("Location: usuarios.php");
+    exit();
+  }
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -51,8 +79,18 @@ include('verifica_login.php');
                     </div>
                     <!--Tabela de Admins-->
                     <div class="card-body table-responsive">
-                      <h6>Admins</h6>
+                      
                         <table class="table table-bordered table-striped">
+                          <thead class="table-dark">
+                            <th>Admins</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                          </thead>
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -97,10 +135,10 @@ include('verifica_login.php');
                                     <td><?=$usuario['tipo']?></td>
                                     <td><?=$usuario['data_cadastro']?></td>
                                     <td>
-                                        <a href="usuario-view.php?id=<?=$usuario['id']?>" style="width: 100%; height: 100%; border-radius: 0;" class="btn btn-secondary btn-sm">Visualizar</a>
-                                        <a href="usuario-edit.php?id=<?=$usuario['id']?>" style="width: 100%; height: 100%; border-radius: 0;" class="btn btn-success btn-sm">Editar</a>
+                                        <a href="usuario-view.php?id=<?=$usuario['id']?>"  class="btn btn-secondary btn-sm w-100 mb-1">Visualizar</a>
+                                        <a href="usuario-edit.php?id=<?=$usuario['id']?>"  class="btn btn-success btn-sm w-100 mb-1">Editar</a>
                                         <form action="" method="POST" class="d-inline">
-                                            <button type="submit" name="delete_usuario" value="1" style="width: 100%; height: 100%; border-radius: 0;" class="btn btn-danger btn-sm">
+                                            <button type="submit" name="delete_usuario" value="<?=$usuario['id']?>" class="btn btn-danger btn-sm w-100" onclick="return confirm('Tem certeza que deseja excluir este usuário?');">
                                             Excluir
                                             </button>
                                         </form>
@@ -118,8 +156,18 @@ include('verifica_login.php');
 
                     <!--Tabela de Clientes-->
                     <div class="card-body table-responsive">
-                      <h6>Clientes</h6>
+
                         <table class="table table-bordered table-striped">
+                            <thead class="table-dark">
+                              <th>Clientes</th>
+                              <th></th>
+                              <th></th>
+                              <th></th>
+                              <th></th>
+                              <th></th>
+                              <th></th>
+                              <th></th>
+                              </thead>
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -164,10 +212,10 @@ include('verifica_login.php');
                                     <td><?=$usuario['tipo']?></td>
                                     <td><?=$usuario['data_cadastro']?></td>
                                     <td>
-                                        <a href="usuario-view.php?id=<?=$usuario['id']?>" style="width: 100%; height: 100%; border-radius: 0;" class="btn btn-secondary btn-sm">Visualizar</a>
-                                        <a href="usuario-edit.php?id=<?=$usuario['id']?>" style="width: 100%; height: 100%; border-radius: 0;" class="btn btn-success btn-sm">Editar</a>
+                                        <a href="usuario-view.php?id=<?=$usuario['id']?>"  class="btn btn-secondary btn-sm w-100 mb-1">Visualizar</a>
+                                        <a href="usuario-edit.php?id=<?=$usuario['id']?>"  class="btn btn-success btn-sm w-100 mb-1">Editar</a>
                                         <form action="" method="POST" class="d-inline">
-                                            <button type="submit" name="delete_usuario" value="1" style="width: 100%; height: 100%; border-radius: 0;" class="btn btn-danger btn-sm">
+                                            <button type="submit" name="delete_usuario" value="<?=$usuario['id']?>" class="btn btn-danger btn-sm w-100" onclick="return confirm('Tem certeza que deseja excluir este usuário?');">
                                             Excluir
                                             </button>
                                         </form>

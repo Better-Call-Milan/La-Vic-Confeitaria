@@ -44,7 +44,7 @@ include('verifica_login.php');
           <div class="card-body text-center">
             <h5 class="card-title">Produtos</h5>
             <p class="card-text">Adicione ou remova da vitrine</p>
-            <a href="produtos.html" class="btn btn-light btn-sm">Gerenciar</a>
+            <a href="produtos.php" class="btn btn-light btn-sm">Gerenciar</a>
           </div>
         </div>
       </div>
