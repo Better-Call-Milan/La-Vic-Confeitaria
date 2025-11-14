@@ -27,6 +27,7 @@ Este repositório contém o desenvolvimento do site oficial da **Confeitaria La 
 <div align="center">
         <img src="assets/img/Funcoes_Admin.png" alt="Logo da Confeitaria La Vic" width="1000"/><br/>
 </div>
+
 ---
 
 ## 👨‍💻 Tecnologias Utilizadas
