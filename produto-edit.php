@@ -25,7 +25,7 @@ include('verifica_login.php');
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
+        <li class="nav-item"><a class="nav-link" href="contato-user.html">Contato</a></li>
         <li class="nav-item"><a class="nav-link" href="logout.php">Sair</a></li>
       </ul>
     </div>
@@ -64,6 +64,29 @@ include('verifica_login.php');
               <div class="mb-3">
                 <label for="nome" class="form-label">Nome do Produto</label>
                 <input type="text" class="form-control" id="nome" name="nome" value="<?= $produto['nome'] ?>" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="categoria" class="form-label">Categoria do Produto</label>
+                <select class="form-control" id="categoria" name="categoria" required>
+                    
+                    <?php
+                    // Lista de categorias fixas
+                    $categorias = ["Bolos de Sabores Variáveis", "Bolos de Aninversário", "Docinhos", "Decorados e lembrancinhas"];
+
+                    // Categoria atual do produto
+                    $categoriaAtual = $produto['categoria'];
+                    ?>
+
+                    <option value="" disabled>Selecione uma categoria</option>
+
+                    <?php foreach ($categorias as $cat): ?>
+                        <option value="<?= $cat ?>" <?= ($cat == $categoriaAtual) ? 'selected' : '' ?>>
+                            <?= $cat ?>
+                        </option>
+                    <?php endforeach; ?>
+
+                </select>
               </div>
 
               <div class="mb-3">

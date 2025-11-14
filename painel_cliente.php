@@ -25,7 +25,7 @@ include('verifica_login.php');
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
+          <li class="nav-item"><a class="nav-link" href="contato-user.html">Contato</a></li>
           <li class="nav-item"><a class="nav-link" href="logout.php">Sair</a></li>
         </ul>
       </div>
@@ -55,7 +55,7 @@ include('verifica_login.php');
           <div class="card-body text-center">
             <h5 class="card-title">Fazer um Pedido</h5>
             <p class="card-text">Venha ver nossas delícias!</p>
-            <a href="pedidos.php" class="btn btn-light btn-sm">Avançar</a>
+            <a href="pedido-create-user.php" class="btn btn-light btn-sm">Avançar</a>
           </div>
         </div>
       </div>
@@ -64,7 +64,7 @@ include('verifica_login.php');
           <div class="card-body text-center">
             <h5 class="card-title">Meus Pedidos</h5>
             <p class="card-text">Ansioso? Acompanhe seu pedido!</p>
-            <a href="meus-pedidos-view.php" class="btn btn-light btn-sm">Verificar</a>
+            <a href="pedidos-user.php" class="btn btn-light btn-sm">Verificar</a>
           </div>
         </div>
       </div>

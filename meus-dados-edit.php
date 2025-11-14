@@ -35,7 +35,7 @@ $usuario = mysqli_fetch_assoc($result);
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="painel_cliente.php">Painel</a></li>
+          <li class="nav-item"><a class="nav-link" href="contato-user.html">Contato</a></li>
           <li class="nav-item"><a class="nav-link" href="logout.php">Sair</a></li>
         </ul>
       </div>

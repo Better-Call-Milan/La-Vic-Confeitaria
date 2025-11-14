@@ -24,7 +24,7 @@ include('verifica_login.php');
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
+          <li class="nav-item"><a class="nav-link" href="contato-user.html">Contato</a></li>
           <li class="nav-item"><a class="nav-link" href="logout.php">Sair</a></li>
         </ul>
       </div>
@@ -51,6 +51,16 @@ include('verifica_login.php');
                 <div class="mb-3">
                   <label for="nome" class="form-label">Nome do Produto</label>
                   <input type="text" class="form-control" id="nome" name="nome" required placeholder="Ex: Bolo de Chocolate">
+                </div>
+                <div class="mb-3">
+                  <label for="categoria" class="form-label">Categoria do Produto</label>
+                  <select class="form-control" id="categoria" name="categoria" required>
+                    <option value="" disabled selected>Selecione uma categoria</option>
+                    <option value="Bolos de Sabores Variáveis">Bolos de Sabores Variáveis</option>
+                    <option value="Bolos de Aninversário">Bolos de Aninversário</option>
+                    <option value="Docinhos">Docinhos</option>
+                    <option value="Decorados e lembrancinhas">Decorados e lembrancinhas</option>
+                  </select>
                 </div>
 
                 <div class="mb-3">

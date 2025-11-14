@@ -60,7 +60,7 @@ if (isset($_POST['delete_produto'])) {
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="painel_admin.php">Painel</a></li>
+          <li class="nav-item"><a class="nav-link" href="contato-user.html">Contato</a></li>
           <li class="nav-item"><a class="nav-link" href="logout.php">Sair</a></li>
         </ul>
       </div>
@@ -93,6 +93,7 @@ if (isset($_POST['delete_produto'])) {
                     <th>ID</th>
                     <th>Preço (R$)</th>
                     <th>Nome</th>
+                    <th>Categoria</th>
                     <th>Descrição</th>
                     <th>Ações</th>
                   </tr>
@@ -116,6 +117,7 @@ if (isset($_POST['delete_produto'])) {
                         <td><?= $produto['id'] ?></td>
                         <td><?= number_format($produto['preco'], 2, ',', '.') ?></td>
                         <td><?= htmlspecialchars($produto['nome']) ?></td>
+                        <td><?= htmlspecialchars($produto['categoria']) ?></td>
                         <td style="max-width: 300px; text-align: left;"><?= nl2br(htmlspecialchars($produto['descricao'])) ?></td>
                         <td>
                           <a href="produto-view.php?id=<?= $produto['id'] ?>" class="btn btn-secondary btn-sm w-100 mb-1">Visualizar</a>

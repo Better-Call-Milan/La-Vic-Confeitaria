@@ -24,9 +24,8 @@ session_start();
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="listaprodutos.html">Produtos</a></li>
+          <li class="nav-item"><a class="nav-link" href="listaprodutos.php">Produtos</a></li>
           <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
-          <li class="nav-item"><a class="nav-link" href="entrar.php">Entrar ou Cadastrar-se</a></li>
         </ul>
       </div>
     </div>

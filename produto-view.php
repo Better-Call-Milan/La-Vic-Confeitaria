@@ -23,7 +23,7 @@ include('verifica_login.php');
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
+          <li class="nav-item"><a class="nav-link" href="contato-user.html">Contato</a></li>
           <li class="nav-item"><a class="nav-link" href="logout.php">Sair</a></li>
         </ul>
       </div>
@@ -73,6 +73,11 @@ include('verifica_login.php');
                   <div class="mb-3">
                     <label class="form-label fw-bold">Nome</label>
                     <p class="form-control"><?= htmlspecialchars($produto['nome']); ?></p>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label fw-bold">Categoria</label>
+                    <p class="form-control"><?= htmlspecialchars($produto['categoria']); ?></p>
                   </div>
 
                   <div class="mb-3">
