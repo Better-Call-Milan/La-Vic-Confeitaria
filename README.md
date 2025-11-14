@@ -11,16 +11,22 @@ Este repositório contém o desenvolvimento do site oficial da **Confeitaria La 
 ## ✨ Funcionalidades
 
 ### Área do Cliente
-- Cadastro de novos clientes
 - Realização de pedidos online
 - Acompanhamento do status do pedido
 - Acesso ao histórico de pedidos
+- Cadastro e alteração de dados
+<div align="center">
+        <img src="assets/img/Funcoes_Usuario.png" alt="Logo da Confeitaria La Vic" width="1000"/><br/>
+</div>
 
 ### Área do Administrador
-- Visualização de todos os pedidos realizados
+- Cadastro e alteração de dados dos produtos
+- Acesso ao histórico completo de pedidos
 - Atualização do status dos pedidos (ex: "em preparo", "pronto", "entregue")
-- Acesso ao histórico completo de pedidos de todos os clientes
-
+- Gerenciamento de usuários
+<div align="center">
+        <img src="assets/img/Funcoes_Admin.png" alt="Logo da Confeitaria La Vic" width="1000"/><br/>
+</div>
 ---
 
 ## 👨‍💻 Tecnologias Utilizadas
